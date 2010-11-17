@@ -1,4 +1,4 @@
-class ReArtifactController < RedmineReController
+class ReArtifactPropertiesController < RedmineReController
   unloadable
 
 
@@ -11,16 +11,16 @@ class ReArtifactController < RedmineReController
   end
 
   def redirect action
-    @re_artifact = ReArtifact.find_by_id(params[:id])
+    @re_artifact_properties = ReArtifactProperties.find_by_id(params[:id])
 
-    if @re_artifact.nil?
+    if @re_artifact_properties.nil?
       render :template => 'error', :status => 500, :id => params[:id]
     else
       @project_id = params[:project_id]
-      @redirect_id = @re_artifact.artifact_id
-      @redirect_controller = @re_artifact.artifact_type.underscore
+      @redirect_id = @re_artifact_properties.artifact_id
+      @redirect_controller = @re_artifact_properties.artifact_type.underscore
 
-      logger.info("Redirecting from ReArtifact (name=" + @re_artifact.name + ", id="+ @re_artifact.id.to_s +
+      logger.info("Redirecting from ReArtifactProperties (name=" + @re_artifact_properties.name + ", id="+ @re_artifact_properties.id.to_s +
               ") to instance (id=" + @redirect_id.to_s + " ,controller=" + @redirect_controller.to_s)
 
 

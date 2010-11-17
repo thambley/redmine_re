@@ -1,8 +1,8 @@
-class ReArtifactObserver < ActiveRecord::Observer
-  #observe :re_artifact
+class ReArtifactPropertiesObserver < ActiveRecord::Observer
+  #observe :re_artifact_properties
   @@save_count = 0  # zaehlt anzahl der save's
 
-   # Durch unerklärende Weise wird der callback 2 mal aufgerufen bei ein Speichervorgang(bsp: @re_subtask.save)
+   # Durch unerklï¿½rende Weise wird der callback 2 mal aufgerufen bei ein Speichervorgang(bsp: @re_subtask.save)
    ## Debug Ausschnitt beim editieren von einem Subtask:
       #1############### Thu Sep 09 21:54:18 +0200 2010 ## ReArtifactObserve, Event: ReArtifact after update#
       #2############### Thu Sep 09 21:54:18 +0200 2010 ## ReArtifactObserve, Event: ReArtifact after save#
@@ -10,18 +10,18 @@ class ReArtifactObserver < ActiveRecord::Observer
       #4############### Thu Sep 09 21:54:18 +0200 2010 ## ReArtifactObserve, Event: ReArtifact after save#
    ## Debug Ausschnitt beim erstellen von einem Subtask nur 1.Zeile wird anders:
       #1############### Thu Sep 09 21:54:18 +0200 2010 ## ReArtifactObserve, Event: ReArtifact after create#
-   #=> Nach langem debuggen habe ich mich zu der dirty lösung entschieden immer beim 2. Save den Vorgan auszufuehren
+   #=> Nach langem debuggen habe ich mich zu der dirty lï¿½sung entschieden immer beim 2. Save den Vorgan auszufuehren
    #=> Also immer wenn die Anzahl der save's eine gerade zahl ist
    def after_save(re_artifact)
      # TEMPORAER AUSSTELLUNG DER VERSIONIERUNG, DA ES SONST PROBLEME BEIM EDIT GIBT!!!
      #-----nur da weil ReGoal noch keine versionierung hat und sonst fehler bei erstellung oder edit
-     return if re_artifact.artifact.class.to_s == "ReGoal"
+     return #if re_artifact.artifact.class.to_s == "ReGoal"
      #----------
 
-     # Wenn ein ReArtifact verschoben wird also sich der parent ändert
+     # Wenn ein ReArtifact verschoben wird also sich der parent ï¿½ndert
      # Hier wird nur einmal after save aufgerufen daher save_count nicht von interesse
-     if( re_artifact.state == State::DROPING )
-        #re_artifact.create_new_version             #TODO : vorher neue version erstellen muss man noch überlegen
+     if( re_artifact.state == State::DROPPING )
+        #re_artifact_properties.create_new_version             #TODO : vorher neue version erstellen muss man noch ï¿½berlegen
         re_artifact.update_extra_version_columns
         re_artifact.versioning_parent
         re_artifact.state == State::IDLE

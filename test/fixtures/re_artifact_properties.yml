@@ -1,5 +1,6 @@
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
 
+# TODO renamed from "old" artifacts
 art_benutzerfreundlichkeit:
   name: benutzerfreundlichkeit
   priority: 1

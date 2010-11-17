@@ -1,7 +1,6 @@
 class CreateReTasks < ActiveRecord::Migration
   def self.up
     create_table :re_tasks do |t|
-      t.column :description, :string
     end
   end
 
