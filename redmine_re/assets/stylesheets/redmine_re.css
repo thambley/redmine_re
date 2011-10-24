@@ -1,0 +1,651 @@
+a {
+/* we need this to make javascript work properly,
+otherwise there is a 1px movement, when clicking on links */
+	outline: none;
+}
+
+a:active {
+  outline: none;
+}
+
+.detail_view {
+  margin-left: 10px;
+  width: 800px;
+  cursor: auto;
+}
+
+/**
+ * 	Left- and RightPane are used by splitcontent
+ */
+#LeftPane {
+	background: #def;
+	overflow: hidden;
+	width: 240px;		/* optional, initial splitbar position */
+	min-width: 50px;	/* optional */
+	/* No margin or border allowed */
+}
+/*
+ * Right-side element of the splitter.
+ */
+#RightPane {
+	background: #def;
+	overflow: auto;
+	width: 10px;
+	position: relative;
+	/* No margin or border allowed */
+}
+.vsplitbar {
+	width: 10px ! important;
+}
+
+.re_bb_form {
+	width: 500px;
+}
+
+.treebar {
+  position: relative;
+  float: left;
+  min-width: 220px;
+  height: 100%;
+}
+
+/* accordion header */
+#treebar h2 {
+	background:#dddddd;
+	margin:0;
+	padding:4px 10px;
+  font-size: 12px;
+	font-weight:bold;
+	cursor:pointer;		
+}
+
+/* accordion header */
+#treebar h2:hover {
+  text-decoration:underline;
+	background:#dddddd;
+}
+
+/* currently active header */
+#treebar h2.current {
+	cursor:default;
+  text-decoration:none;
+}
+
+/* accordion pane */
+#treebar .pane {
+  padding-top: 4px;
+  padding-left: 7px;
+	border-left: 10px solid #dddddd;
+	border-bottom: 1px solid #dddddd;
+	border-right: 1px solid #dddddd;
+	display:none;
+	padding:5px;
+	overflow: hidden;
+	color:#fff;
+}
+
+#treebar .pane h2 {
+	font-weight:bold;
+	margin:0 0 -5px 0;
+	font-size:16px;
+	color:#999;
+}
+
+#treebar ul.navigation {
+  list-style-type:none;
+  padding: 0;
+  margin: 0;
+}
+
+#treebar ul.navigation li {
+  padding-bottom:4px;
+}
+
+.recopyright {
+  font-size: 0.9em;
+}
+
+table.subtasks {
+  border-spacing: 0;
+  border-style: none;
+  border-width: 0;
+  min-width: 800px;
+}
+
+#subtasks .drop_hover {
+  background: url(../images/sortable_tree/drag.png) no-repeat bottom left;
+}
+
+.formError {
+  color:red;
+  font-weight:bold;
+}
+
+tr.subtask {
+  background-color: #F6F7F8;
+  border-width: 1px;
+  padding: 0px;
+  border-style: solid;
+  border-color: gray;
+}
+
+td.subtask {
+  border-top: 2px solid #505050;
+}
+
+td.one_line {
+	width: 20px;
+}
+
+tr.variant {
+  background-color: #FFE6BF;
+}
+
+tr.problem {
+  background-color: #F1938C;
+}
+
+tr.draggable {
+  cursor: move;
+}
+
+textarea {
+  border: 1px solid #CCCCCC;
+  font-family: Verdana,sans-serif;
+  padding: 3px;
+  font-size: 12px;
+  width: 95%;
+}
+
+textarea.bb_config {
+	width: 50%;
+	height: 70px;
+	rows: 5;
+}
+
+select.bb_config {
+	height: 70px;
+}
+
+#context-menu li.header {
+  border-bottom-width: 1px;
+  border-bottom-color: black;
+  border-bottom-style: dotted;
+  background-color: #507AAA;
+  padding-left: 5px;
+  color: white;
+}
+
+label.medium {
+  width: 150px;
+}
+
+label.large {
+  width: 300px;
+}
+
+label {
+  font-weight: bold;
+  width: 100px;
+  clear:left; 
+  display:block;
+  float:left; 
+  text-align:right;
+  padding-right:5px;
+}
+
+label.filter {
+  font-weight: bold;
+  width: 100px;
+  clear:left; 
+  display:block;
+  float:left; 
+  text-align:left;
+  padding-right:5px;
+}
+
+td.dnd {
+  cursor: move;
+}
+
+label.behind_checkbox {
+  display:inline;
+  float:none; 
+  clear:none;
+  margin-left: 5px;
+}
+
+label.disabled_is_true {
+	color:#AAAAAA;
+}
+
+
+label.bb_config {
+	width: 130px;
+}
+
+label.bb_options {
+  display:inline;
+  float:none; 
+  clear:none;
+  margin-left: 5px;
+  width:60px;	
+}
+
+label.user_defined {
+	width: 150px;
+}
+
+input.bb_checkbox {
+	margin-left: 105px;
+}
+
+.numberfield-slider {
+  float:left;
+}
+
+.numberfield-slider .numberfield-track {
+  float:right;
+  width: 150px;
+  background-color: #507AAA;
+  height: 15px;
+  margin: 3px 0 0 15px;
+}
+
+.numberfield-slider .numberfield-handle {
+  width: 8px;
+  height: 13px;
+  margin: 1px 1px 0 1px;
+  background-color: #FFFFFF;
+  cursor: e-resize;
+}
+
+.icon-subtask-before {
+  background-image: url("../images/icons/subtask_before.png");
+}
+
+.icon-subtask-after {
+  background-image: url("../images/icons/subtask_after.png");
+}
+
+.icon-subtask-wiki-new {
+  background-image: url("../images/icons/book_add.png");
+}
+
+.icon-subtask-wiki-edit {
+  background-image: url("../images/icons/book_edit.png");
+}
+
+.select_field_filter {
+  width: 110px;
+}
+
+ins.new {
+    background: url(../../../images/add.png) no-repeat left top;
+}
+ins.edit {
+    background: url(../../../images/edit.png) no-repeat left top;
+}
+ins.delete {
+    background: url(../../../images/delete.png) no-repeat left top;
+}
+
+ins.project {
+  background: url(../images/icons/group_gear.png) no-repeat left top;
+}
+a.project {
+  background: url(../images/icons/group_gear.png) no-repeat left top;
+}
+ins.re_workarea {
+  background: url(../images/icons/bricks.png) no-repeat left top;
+}
+a.re_workarea {
+  background: url(../images/icons/bricks.png) no-repeat left top;
+    margin-left: 0px;
+}
+ins.re_task {
+  background: url(../images/icons/report_user.png) no-repeat left top;
+}
+a.re_task {
+  background: url(../images/icons/report_user.png) no-repeat left top;
+    margin-left: 0px;
+}
+ins.re_subtask {
+  background: url(../images/icons/report.png) no-repeat left top;
+}
+a.re_subtask {
+  background: url(../images/icons/report.png) no-repeat left top;
+    margin-left: 0px;
+}
+ins.re_goal {
+  background: url(../images/icons/world.png) no-repeat left top;
+}
+a.re_goal {
+  background: url(../images/icons/world.png) no-repeat left top;
+    margin-left: 0px;
+}
+ins.re_user_profile {
+  background: url(../images/icons/user.png) no-repeat left top;
+}
+a.re_user_profile {
+  background: url(../images/icons/user.png) no-repeat left top;
+    margin-left: 0px;
+}
+ins.re_section {
+  background: url(../images/icons/text_padding_top.png) no-repeat left top;
+}
+a.re_section {
+  background: url(../images/icons/text_padding_top.png) no-repeat left top;
+    margin-left: 0px;
+}
+ins.re_attachment {
+    background: url(../images/icons/attach.png) no-repeat left top;
+}
+a.re_attachment {
+    background: url(../images/icons/attach.png) no-repeat left top;
+    margin-left: 0px;
+}
+ins.re_vision {
+    background: url(../images/icons/lightbulb.png) no-repeat left top;
+}
+a.re_vision {
+    background: url(../images/icons/lightbulb.png) no-repeat left top;
+    margin-left: 0px;
+}
+ins.re_requirement {
+    background: url(../images/icons/pencil.png) no-repeat left top;
+}
+a.re_requirement {
+    background: url(../images/icons/pencil.png) no-repeat left top;
+    margin-left: 0px;
+}
+ins.re_scenario {
+    background: url(../images/icons/newspaper.png) no-repeat left top;
+}
+a.re_scenario {
+    background: url(../images/icons/newspaper.png) no-repeat left top;
+    margin-left: 0px;
+}
+ins.re_processword {
+    background: url(../images/icons/cog.png) no-repeat left top;
+}
+a.re_processword {
+    background: url(../images/icons/cog.png) no-repeat left top;
+	margin-left: 0px;
+}
+
+ins.re_knowledge_artifact {
+    background: url(../images/icons/note.png) no-repeat left top;
+}
+a.re_knowledge_artifact {
+    background: url(../images/icons/note.png) no-repeat left top;
+    margin-left: 0px;
+}
+
+/***** custom tooltips visualization*****/
+
+/* if you define a tooltip use for the tip 2 css class: class="tip customtipname"
+   for example: class="tip subtask_error_tip"
+
+   look in apllication.css of redmine which styles are already set and overwrite or add
+   the styles for your custom tooltip
+*/
+
+div.tooltip:hover span.subtask_error_tip {
+  border: 1px solid #EC705B;
+  text-align:center;
+  font-weight:bold;
+  color:#EC705B;
+}
+
+div.tooltip:hover span.wiki_page_preview_tip {
+    border: 1px solid #507AAA;
+    font-size: x-small;
+    padding-bottom: 5px;
+    padding-left: 5px;
+    padding-right: 5px;
+    padding-top: 20px;
+}
+
+div.tooltip:hover span.userdefined_fields_tip {
+    border: 1px solid #507AAA;
+	position: absolute;
+    text-align:center;
+	float: right;
+  	font-weight:bold;
+    padding-bottom: 5px;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+div.tooltip.userdefined_fields {
+	position: relative;
+	float: right;
+}
+
+div.tooltip.placeholder {
+	position: relative;
+	width: 16px;
+	float: right;
+}
+
+
+div.bullet_add {
+    background: url("../images/icons/bullet_add.png") no-repeat scroll 5px 2px transparent;
+    float: left;
+    height: 16px;
+    position: relative;
+    width: 16px;
+}
+/*
+Back to top button 
+*/
+#back-top {
+	position: fixed;
+	bottom: 20px;
+	margin-left: 10px;
+	width: 100px;
+	display: block;
+	margin-bottom: 7px;
+    background-color: #dddddd;
+    
+   /* rounded corners */
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+
+	/* background color transition */
+	-webkit-transition: 1s;
+	-moz-transition: 1s;
+	transition: 1s;
+
+}
+
+
+#back-top a {
+	display: block;
+	display: none;
+	text-align: center;
+	font: 11px/100%;
+	text-transform: uppercase;
+	text-decoration: none;
+	color: #999999;
+  /* background color transition */
+	-webkit-transition: 1s;
+	-moz-transition: 1s;
+	transition: 1s;
+
+}
+
+
+#back-top a:hover {
+  text-decoration:underline;
+}
+
+/* root element for tabs  */
+ul.tabs { 
+	list-style:none; 
+	margin:0 !important; 
+	padding:0;	
+	border-bottom:1px solid #666;	
+	height:30px;
+}
+
+/* single tab */
+ul.tabs li { 
+	float:left;	 
+	text-indent:0;
+	padding:0;
+	margin:0 !important;
+	list-style-image:none !important; 
+}
+
+/* link inside the tab. uses a background image */
+ul.tabs a {
+    background: none repeat scroll 0 0 #EEEEEE;
+    border: 1px solid #CCCCCC;
+    color: #777777;
+    display: block;
+    font-size: 11px;
+    font-weight: bold;
+    height: 24px;
+    line-height: 25px;
+    margin: 0;
+    padding: 0 9px;
+    position: relative;
+    text-align: center;
+    text-decoration: none;
+    top: 6px;
+    margin-left: 14px;
+}
+
+ul.tabs a:active {
+	outline:none;		
+}
+
+/* when mouse enters the tab move the background image */
+ul.tabs a:hover {
+	background-position: -420px -31px;	
+	color:#777777;	
+	background: #ffffdd;
+}
+
+/* active tab uses a class name "current". its highlight is also done by moving the background image. */
+ul.tabs a.current, ul.tabs a.current:hover, ul.tabs li.current a {
+    background: none repeat scroll 0 0 #FFFFFF;
+    border: 1px solid #CCCCCC;
+    color: #777777 !important;
+    cursor: default !important;
+    font-weight: bold;
+    margin-left: 14px;
+}
+
+/* Different widths for tabs: use a class name: w1, w2, w3 or w2 */
+
+
+/* width 1 */
+ul.tabs a.s 			{ background-position: -553px 0; width:81px; }
+ul.tabs a.s:hover 	{ background-position: -553px -31px; }
+ul.tabs a.s.current  { background-position: -553px -62px; }
+
+/* width 2 */
+ul.tabs a.l 			{ background-position: -248px -0px; width:174px; }
+ul.tabs a.l:hover 	{ background-position: -248px -31px; }
+ul.tabs a.l.current  { background-position: -248px -62px; }
+
+
+/* width 3 */
+ul.tabs a.xl 			{ background-position: 0 -0px; width:248px; }
+ul.tabs a.xl:hover 	{ background-position: 0 -31px; }
+ul.tabs a.xl.current { background-position: 0 -62px; }
+
+
+/* initially all panes are hidden */ 
+.panes .pane {
+	display:none;		
+}
+
+a.lessmargin {
+	margin-left: -4px;
+}
+
+/* Visualization layout */
+#visualization_filters td {
+  padding-top: 0px;
+  padding-bottom: 1px;
+}
+
+#infovis {
+	overflow: hidden;
+}
+
+#visualization_filters {
+	float: left;
+	width: 250px;
+}
+
+div#visualization_filters div.text form label {
+  	width: 150px;
+}
+
+#node-details {
+		font-size: 10px;
+}
+
+.tip {
+    color: #111;
+    width: 180px;
+    background-color: white;
+    border:1px solid #ccc;
+    -moz-box-shadow:#555 2px 2px 8px;
+    -webkit-box-shadow:#555 2px 2px 8px;
+    -o-box-shadow:#555 2px 2px 8px;
+    box-shadow:#555 2px 2px 8px;
+    opacity:0.9;
+    filter:alpha(opacity=90);
+    font-size:10px;
+    padding:7px;
+}
+
+/* My page block layout */
+.coverage_critical {
+    color: #CA2114;
+}
+
+.coverage_normal {
+    color: #FF7A00;
+}
+
+.coverage_good{
+    color: #17A600;
+}
+
+.rating_comments{
+height:auto;
+}
+.rating_comments_left {
+    float: left;
+    height: 100%;
+    margin-right: 10px;
+    width: 35%;
+}
+.rating_comments_right {
+    height: 100%;
+}
+
+.rating_comments_clear {
+clear:both;
+}
+
+.comment_input{
+    height: 90%;
+    width: 99%;
+}
+
+fieldset.rating{
+    height:85%;
+}
+
+fieldset.comment{
+    height:85%;
+}
