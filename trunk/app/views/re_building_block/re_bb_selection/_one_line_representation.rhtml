@@ -1,9 +1,0 @@
-<% if (re_bb.for_condensed_view or defined? force_representation) and !data.empty?  %>
-	<td class='one_line'>
-		<label class='filter'><%= h(re_bb.name) + ": " %></label>
-		<% data.each do |datum| %>	
-			<% option = ReBbOptionSelection.find(datum.re_bb_option_selection_id) %>	
-			<%= h(option.value) %>
-		<% end %><br/>
-	</td>
-<% end %>
