@@ -61,7 +61,7 @@ within the KoREM project (http://korem.de) at Bonn-Rhine-Sieg University of Appl
       {
         :requirements => [:setup, :configure],
         :re_settings => [:configure_fields],
-        :re_building_block => [:edit, :new, :update_config_form, :delete_data, 
+        :re_building_block => [:edit, :new, :delete, :update_config_form, :delete_data, 
           :react_to_change_in_field_multiple_values, :re_building_block_referred_artifact_types,
           :react_to_check_of_embedding_type_attributes, :react_to_change_in_data_field_artifact_type,
           :react_to_change_in_field_referred_artifact_types]
@@ -75,7 +75,7 @@ within the KoREM project (http://korem.de) at Bonn-Rhine-Sieg University of Appl
   activity_provider :re_artifact_properties, :class_name => 'ReArtifactProperties', :default => true
 
   #Observers
-  config.active_record.observers = :re_artifact_properties_observer
+  #config.active_record.observers = :re_artifact_properties_observer
 
   config.gem "ajaxful_rating_jquery"
   #ActiveSupport::Dependencies.load_once_paths.delete(File.expand_path(File.dirname(__FILE__))+'/lib')

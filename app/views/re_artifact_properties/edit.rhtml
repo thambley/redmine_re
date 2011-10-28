@@ -3,9 +3,9 @@
   <%= render 're_artifact_properties/action_menu', {:artifact => @artifact} %>
 
   <% if @artifact.new_record? %>
-    <h2><%= t(:re_new) + ' ' + t(:re_artifact) + ' ' + t(:re_of_type) + ' ' + t( params[:controller] ) %></h2>
+    <h2><%= t(:re_new) + ' ' + t(:re_artifact) + ' ' + t(:re_of_type) + ' ' + ( rendered_artifact_type(params[:controller]) ) %></h2>
   <% else %>
-    <h2><%= t(:re_edit) + ' ' + t(:re_artifact) + ' #' + @artifact.artifact_id.to_s + ' - ' + @artifact.name + ' (' + t( params[:controller] ) + ')' unless @artifact.nil? %></h2>
+    <h2><%= t(:re_edit) + ' ' + t(:re_artifact) + ' #' + @artifact.artifact_id.to_s + ' - ' + @artifact.name + ' (' + rendered_artifact_type(params[:controller]) + ')' unless @artifact.nil? %></h2>
   <% end %>
 
   <%= errors_and_flash params[:controller] %>
@@ -29,7 +29,7 @@
 	        <%= hidden_field_tag :parent_artifact_id, @parent.nil? ? '' : @parent.id %>
 
 	        <p>
-	          <%= f.label :name, l(:re_artifact_name) %> <%= f.text_field :name %>
+          <%= f.label :name, t(:re_artifact_name) %> <%= f.text_field :name, :required => true %>
 	        </p>
 	        <%= javascript_tag "Form.Element.focus('artifact_name');" %>
 	      </div>
@@ -174,7 +174,7 @@
        </div>
     <% end %>
 
-      
+    <p>  
 		<%= submit_tag t(:re_save) %>
 			  &nbsp;
 		<%= link_to(t(:re_cancel), { :project_id => @project.id }, { :class => "icon icon-reload" }) %>
@@ -189,8 +189,8 @@
 	
 	
   	</div> <!--end of tab one -->  
-  	
-  	
+
+
   	<% if params.has_key? :id %>
 	    <div class="box">
 		  <%= render "re_artifact_properties/manage_relationships", :id => params[:id], :project_id => @project.id %>

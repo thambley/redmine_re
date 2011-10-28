@@ -9,7 +9,33 @@ a:active {
 }
 
 .detail_view {
-  margin-left: 240px;
+    cursor: auto;
+    margin-left: 21%;
+    width: 79%;
+}
+
+/**
+ * 	Left- and RightPane are used by splitcontent
+ */
+#LeftPane {
+	background: #def;
+	overflow: hidden;
+	width: 240px;		/* optional, initial splitbar position */
+	min-width: 50px;	/* optional */
+	/* No margin or border allowed */
+}
+/*
+ * Right-side element of the splitter.
+ */
+#RightPane {
+	background: #def;
+	overflow: auto;
+	width: 10px;
+	position: relative;
+	/* No margin or border allowed */
+}
+.vsplitbar {
+	width: 10px ! important;
 }
 
 .re_bb_form {
@@ -17,10 +43,10 @@ a:active {
 }
 
 .treebar {
-  position: absolute;
-  float: left;
-  min-width: 220px;
-  height: 100%;
+    float: left;
+    height: 100%;
+    position: relative;
+    width: 20%;
 }
 
 /* accordion header */
@@ -47,14 +73,13 @@ a:active {
 
 /* accordion pane */
 #treebar .pane {
-  padding-top: 4px;
-  padding-left: 7px;
-	border-left: 10px solid #dddddd;
-	border-bottom: 1px solid #dddddd;
-	border-right: 1px solid #dddddd;
-	display:none;
-	padding:5px;
-	color:#fff;
+    border-bottom: 1px solid #DDDDDD;
+    border-left: 10px solid #DDDDDD;
+    border-right: 1px solid #DDDDDD;
+    color: #FFFFFF;
+    display: none;
+    overflow-x: scroll;
+    padding: 5px;
 }
 
 #treebar .pane h2 {
@@ -355,6 +380,10 @@ a.re_knowledge_artifact {
     margin-left: 0px;
 }
 
+ins.re_my_requirement_artifact {
+    background: url(../images/icons/report.png) no-repeat left top;
+}
+
 /***** custom tooltips visualization*****/
 
 /* if you define a tooltip use for the tip 2 css class: class="tip customtipname"
@@ -437,6 +466,7 @@ Back to top button
 
 #back-top a {
 	display: block;
+	display: none;
 	text-align: center;
 	font: 11px/100%;
 	text-transform: uppercase;
@@ -473,20 +503,22 @@ ul.tabs li {
 }
 
 /* link inside the tab. uses a background image */
-ul.tabs a { 
-	background: url("../images/tabs/blue.png") no-repeat -420px 0;
-	font-size:11px;
-	display:block;
-	height: 30px;  
-	line-height:30px;
-	width: 134px;
-	text-align:center;	
-	text-decoration:none;
-	color:#333;
-	padding:0px;
-	margin:0px;	
-	position:relative;
-	top:1px;
+ul.tabs a {
+    background: none repeat scroll 0 0 #EEEEEE;
+    border: 1px solid #CCCCCC;
+    color: #777777;
+    display: block;
+    font-size: 11px;
+    font-weight: bold;
+    height: 24px;
+    line-height: 25px;
+    margin: 0;
+    padding: 0 9px;
+    position: relative;
+    text-align: center;
+    text-decoration: none;
+    top: 6px;
+    margin-left: 14px;
 }
 
 ul.tabs a:active {
@@ -496,14 +528,18 @@ ul.tabs a:active {
 /* when mouse enters the tab move the background image */
 ul.tabs a:hover {
 	background-position: -420px -31px;	
-	color:#fff;	
+	color:#777777;	
+	background: #ffffdd;
 }
 
 /* active tab uses a class name "current". its highlight is also done by moving the background image. */
 ul.tabs a.current, ul.tabs a.current:hover, ul.tabs li.current a {
-	background-position: -420px -62px;		
-	cursor:default !important; 
-	color:#000 !important;
+    background: none repeat scroll 0 0 #FFFFFF;
+    border: 1px solid #CCCCCC;
+    color: #777777 !important;
+    cursor: default !important;
+    font-weight: bold;
+    margin-left: 14px;
 }
 
 /* Different widths for tabs: use a class name: w1, w2, w3 or w2 */
@@ -593,7 +629,7 @@ height:auto;
     float: left;
     height: 100%;
     margin-right: 10px;
-    width: 35%;
+    width: 265px;
 }
 .rating_comments_right {
     height: 100%;
