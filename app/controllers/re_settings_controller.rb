@@ -20,6 +20,7 @@ class ReSettingsController < RedmineReController
        @project_artifact.save
        logger.debug "#####################       --------------------  Errors: #{@project_artifact.errors.inspect}"
     end
+    @plugin_description = ReSetting.get_plain("plugin_description", @project.id)
 
     if request.post?
       save_user_config
@@ -40,7 +41,6 @@ class ReSettingsController < RedmineReController
         configured_artifact['in_use'] = true
         configured_artifact['alias'] = artifact_type.gsub(/^re_/, '').humanize
         configured_artifact['color'] = "%06x" % (rand * 0xffffff)
-        configured_artifact['show_children_in_tree'] = true
         ReSetting.set_serialized(artifact_type, @project.id, configured_artifact)
       end
       @re_artifact_configs[artifact_type] = configured_artifact
@@ -103,6 +103,20 @@ class ReSettingsController < RedmineReController
     # returns the settings hash for the according artifact_type
     self.get_serialized(artifact_type, project_id)
   end
+  
+  def edit_artifact_type_description
+    @artifact_type = params[:artifact_type]
+    configured_artifact = ReSetting.get_serialized(@artifact_type, @project.id)
+    @description = configured_artifact['description']
+    # Needed to use the form for helper and fill the textfield properly
+    if request.post?
+      configured_artifact['description'] = params[:description] unless params[:description].nil? 
+      ReSetting.set_serialized(@artifact_type, @project.id, configured_artifact)
+      flash.now[:notice] = l(:re_description_updated_successfully)
+      @description = configured_artifact['description']
+    end
+    
+  end
 
 private
 
@@ -150,6 +164,8 @@ private
 
     ReSetting.set_plain("relation_management_pane", @project.id, new_settings.has_key?("relation_management_pane").to_s)
     ReSetting.set_plain("visualization_size", @project.id, new_settings["visualization_size"])
+    ReSetting.set_plain("plugin_description", @project.id, params["plugin_description"])
+    @plugin_description = params["plugin_description"]
 
     ReSetting.set_serialized("artifact_order", @project.id, new_artifact_order)
     ReSetting.set_serialized("relation_order", @project.id, new_relation_order)
@@ -159,7 +175,6 @@ private
       # disabled checkboxes do not send a key/value pair
       v['in_use'] = v.has_key? 'in_use'
       v['printable'] = v.has_key? 'printable'
-      v['show_children_in_tree'] = v.has_key? 'show_children_in_tree'
       logger.debug('storing:' + k + ' ' + @project.id.to_s + ' ' + v.to_yaml)
       ReSetting.set_serialized(k, @project.id, v)
     end

@@ -1,0 +1,9 @@
+<% configured_description = ReSetting.get_serialized('re_rationale', @project.id)['description']%>
+<% if configured_description.nil? %> 
+	Use rationals to justify your requirements or other artifacts.<br />
+<% else %> 
+	<%= textilizable(configured_description, :only_path => false) %> 
+<% end %> 
+
+
+
