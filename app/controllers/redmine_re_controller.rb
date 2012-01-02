@@ -46,10 +46,10 @@ class RedmineReController < ApplicationController
     ReSetting.check_cache
     @re_artifact_order = ReSetting.get_serialized("artifact_order", @project.id)
     @re_relation_order = ReSetting.get_serialized("relation_order", @project.id)
+    @re_artifact_settings = {}
 
     return if @re_artifact_order.nil?
     return if @re_relation_order.nil?
-    @re_artifact_settings = {}
     @re_artifact_order.each { |a| @re_artifact_settings[a] = ReSetting.get_serialized(a, @project.id) }
     @re_artifact_order.delete_if { |a| @re_artifact_settings[a]['in_use'] == false }
 
@@ -128,7 +128,7 @@ class RedmineReController < ApplicationController
     @issues = @artifact_properties.issues
 
     edit_hook_after_artifact_initialized params
-
+    
     # Remove Comment (Initiated via GET)
     if User.current.allowed_to?(:administrate_requirements, @project)
       unless params[:deletecomment_id].blank?
@@ -138,7 +138,6 @@ class RedmineReController < ApplicationController
     end
 
     if request.post? # we want to create or update an artifact
-
       @artifact.attributes = params[:artifact]
       # attributes that cannot be set by the user
       @artifact.project_id = @project.id
@@ -161,7 +160,6 @@ class RedmineReController < ApplicationController
       end
 
       valid = @artifact.valid?
-      valid = edit_hook_validate_before_save(params, valid)
 
       logger.debug("############ errors after validating #{@artifact_type} ##{@artifact.id}: #{@artifact.errors.inspect}") if logger
 
@@ -219,11 +217,11 @@ class RedmineReController < ApplicationController
   end
 
   def edit_hook_after_artifact_initialized(params)
-    logger.debug("#############: edit_validate_before_save_hook not called") if logger
+    logger.debug("#############: edit_validate_before_save_hook not called(1)") if logger
   end
 
   def edit_hook_validate_before_save(params, artifact_valid)
-    logger.debug("#############: edit_validate_before_save_hook not called") if logger
+    logger.debug("#############: edit_validate_before_save_hook not called(2)") if logger
     return true
   end
 

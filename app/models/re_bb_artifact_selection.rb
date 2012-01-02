@@ -8,19 +8,17 @@ class ReBbArtifactSelection < ReBuildingBlock
   serialize :referred_artifact_types
   serialize :referred_relationship_types
   
-  
+
   @@data_form_partial_strategy = 're_building_block/re_bb_artifact_selection/data_form'
-  @@multiple_data_form_partial_strategy = 're_building_block/re_bb_artifact_selection/multiple_data_form'
+  @@multiple_data_form_partial_strategy = 're_building_block/re_bb_artifact_selection/multiple_data_form'                               
   @@additional_work_before_save_strategies = {SET_EMPTY_ARRAY_IF_NEEDED => {:fields_to_check => [:referred_artifact_types, :referred_relationship_types]},
-                                              DELETE_DATA_FROM_DATA_FIELDS_BEFORE_SAVE => nil}
+                                              DELETE_DATA_FROM_DATA_FIELDS_BEFORE_SAVE => nil}  
   @@additional_work_after_save_strategies = {}
-  @@additional_work_after_delete_strategies = {}
   @@validation_strategies = {VALIDATE_UP_TO_DATE => nil, 
                              VALIDATE_DATUM_FITS_CONFIG => nil}
-  @@validation_whole_data_strategies = {VALIDATE_MANDATORY_VALUES => {:value => 're_artifact_properties_id'}, 
-                                        VALIDATE_MULTIPLE_DATA_NOT_ALLOWED => nil}
-  
-  #ToDo: später auslagern in eigenes Modul
+  @@validation_whole_data_strategies = {VALIDATE_MANDATORY_VALUES => {:attribute_names => {:value => 're_artifact_properties_id'}, :error_messages => nil}, 
+                                        VALIDATE_MULTIPLE_DATA_NOT_ALLOWED => nil}                                
+
   def data_form_partial_strategy
     @@data_form_partial_strategy
   end
@@ -32,13 +30,9 @@ class ReBbArtifactSelection < ReBuildingBlock
   def additional_work_before_save_strategies
     @@additional_work_before_save_strategies
   end
-  
+    
   def additional_work_after_save_strategies
     @@additional_work_after_save_strategies
-  end 
-    
-  def additional_work_after_delete_strategies
-    @@additional_work_after_delete_strategies
   end
   
   def validation_strategies
@@ -48,9 +42,7 @@ class ReBbArtifactSelection < ReBuildingBlock
   def validation_whole_data_strategies
     @@validation_whole_data_strategies
   end
-
-
-
+ 
   def save_datum(datum_hash, artifact_properties_id)
     datum_hash.keys.each do |id|
       # If only the parameter 'confirm_checked' is given, try to update
@@ -77,10 +69,10 @@ class ReBbArtifactSelection < ReBuildingBlock
           end    
         else
           # An artifact is choosen. Therefore check relationships.
-          # Try to find a realtionship with the given parameters . If none exsist, 
+          # Try to find a relationship with the given parameters . If none exsist, 
           # create one. If the relation to be created is of type parentchild, 
           # the parent-property of the corresponding artifact has to be set and an 
-          # update of its former parent relationship has to be executed. 
+          # update of its former parent relationship has to be done. 
           relation = ReArtifactRelationship.find(:first, :conditions => {:source_id => artifact_properties_id, :sink_id => datum_hash[id][:related_artifact_id], :relation_type => datum_hash[id][:relation_type]}) 
           unless relation 
             if datum_hash[id][:relation_type] == 'parentchild'
