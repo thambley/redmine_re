@@ -7,6 +7,7 @@ Dispatcher.to_prepare do
   # redmine_re patches
   require_dependency 'issue_patch'
   require_dependency 'issue_controller_patch'
+  require_dependency 'query_patch'
   require_dependency 'user_patch'
   # gems
   require_dependency 'ajaxful_rating_patch'
@@ -54,7 +55,8 @@ within the KoREM project (http://korem.de) at Bonn-Rhine-Sieg University of Appl
           :visualization, :build_json_according_to_user_choice],
         :re_building_block => [:delete_data, :re_building_block_referred_artifact_types,
           :react_to_change_in_data_field_artifact_type],
-        :re_rationale => [:edit, :new]
+        :re_rationale => [:edit, :new],
+        :re_link_building_block => [:popup_close_and_update_link, :popup],
 
       }
     )

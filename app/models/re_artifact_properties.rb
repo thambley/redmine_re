@@ -2,7 +2,7 @@ class ReArtifactProperties < ActiveRecord::Base
   unloadable
 
   cattr_accessor :artifact_types
-  ajaxful_rateable :stars => 10, :allow_update => false#, :dimensions => [:first]
+  ajaxful_rateable :stars => 10, :allow_update => true#, :dimensions => [:first]
   has_many :realizations, :dependent => :destroy
   has_many :comments, :as => :commented, :dependent => :destroy, :order => "created_on asc"
   has_many :issues, :through => :realizations, :uniq => true
@@ -68,12 +68,28 @@ class ReArtifactProperties < ActiveRecord::Base
   validates_presence_of :parent,     :message => l(:re_artifact_properties_validates_presence_of_parent), :unless => Proc.new { |a| a.artifact_type == "Project" }
   validates_associated :parent_relation
 
+  validates_length_of :name, :minimum => 3, :message => l(:re_artifact_properties_not_enought_chars)
+  validates_length_of :name, :maximum =>50, :message => l(:re_artifact_properties_to_many_chars)
+
   after_destroy :delete_wiki_page
 
   def self.get_properties_id(controllername, subartifact_id)
     # delivers the ID of the re_artifact_properties when the name of the controller and id of sub-artifact is given
     @re_artifact_properties = ReArtifactProperties.find_by_artifact_type_and_artifact_id(controllername.camelize, subartifact_id)
     @re_artifact_properties.id
+  end
+
+  # Finds all artifacts that are commonly used by the supplied issues
+  def self.find_all_by_common_issues(issue_array, *args)
+    artifact_ids = []
+    issue_array.each do |issue|
+      if artifact_ids.empty?
+        artifact_ids = issue.realizations.collect { |r| r.re_artifact_properties_id }
+      else
+        artifact_ids = artifact_ids & (issue.realizations.collect { |r| r.re_artifact_properties_id })
+      end
+    end
+    ReArtifactProperties.find(artifact_ids, *args)
   end
 
   def position
