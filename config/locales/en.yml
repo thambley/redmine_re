@@ -270,6 +270,10 @@ en:
   re_source_artifact: 'Source Artifact'
   re_sink_artifact: 'Sink Artifact'
   re_artifact_type: 'Type'
+  re_source_artifact_name: 'Source Artifact Name'
+  re_sink_artifact_name: 'Sink Artifact Name'
+  re_source_artifact_type: 'Source Artifact Type'
+  re_sink_artifact_type: 'Sink Artifact Type'
   re_create_new_relation: 'Create a new relation'
   re_dependency_relation_type: 'Dependency'
   re_conflict_relation_type: 'Conflict'
@@ -361,15 +365,44 @@ en:
   # re_settings
   re_settings_have_to_save: 'No configuration saved yet: You have to click on save before you leave this page!'
 
-  # knowledge artifact
-  re_knowledge_artifact: 'Knowledge'
-  re_create_re_knowledge_artifact: 'Create a new Knowledge'
-  re_new_re_knowledge_artifact: 'Knowledge'
-  re_knowledge_artifact_priority: 'Priority'
-
   # re_requirement
   re_requirement: 'Requirement'
   ReRequirement: 'Requirement'
+
+  #re_use_case
+  re_use_case: 'Use Case'
+  ReUseCase: 'Use Case'
+  re_new_re_use_case: 'New Use Case'
+  re_create_re_use_case: 'Create a new Use Case'
+  re_use_case_specific_attributes: 'Use Case specific attributes'
+  re_use_case_saved: 'Use Case sucessfully saved'
+  re_use_case_deleted: 'Use Case %{name} has been deleted'
+  re_use_case_not_deleted: 'Use Case %{name} could not be deleted'
+  re_use_case_not_found: 'Could not find a Use Case with id %{id} to delete'
+  re_use_case_level : 'Level'
+  re_use_case_abstract_overview : 'Abstract Overview'
+  re_use_case_overview : 'Overview'
+  re_use_case_user_goal : 'User Goal'
+  re_use_case_function : 'Function'
+  re_use_case_low : 'Low'
+  re_use_case_trigger : 'Trigger'
+  re_use_case_precondition : 'Precondition'
+  re_use_case_postcondition : 'Postcondition'
+  re_delete_use_case_step: 'Delete'
+  re_user_steps: 'User Steps'
+  re_system_steps: 'System Steps'
+  re_use_case_steps: 'Use Case Steps'
+  re_uc_user: 'User'
+  re_uc_system: 'System'
+  re_uc_add: 'add'
+  re_uc_insert: 'add'
+  re_system_step: 'system step'
+  re_user_step: 'user step'
+  re_use_case_and_steps_saved: 'Use Case and all steps successfully saved'
+  re_use_case_step: 'Step'
+  re_extension_type: 'Type'
+  re_extension_description: 'Description'
+  re_uc_dialog: 'dialog'
 
   # re_scenario
   re_scenario: 'Scenario'
@@ -481,6 +514,9 @@ en:
   re_bb_no_further_configuration_necessary: 'No further configuration necessary.'
   re_bb_url: 'Url'
   re_bb_description: 'Description'
+  re_bb_file: 'File Building Block'
+  re_bb_inline_view_allowed: 'Inline-View allowed'
+  allowed_filetypes : 'Allowed filetypes'
   
   # re_tree
   re_tree_overview: 'Artifact Summary'
@@ -493,18 +529,6 @@ en:
 
   # fields
   field_re_artifact: 'field artifact'
-
-  # filter
-  re_enhanced_filter: 'Enhanced filter'
-  re_apply_filter: 'Apply filter'
-  re_starts_with: 'starts with'
-  re_ends_with: 'ends with'
-  re_contains: 'contains'
-  re_equals: 'equals'
-  re_greater_than: 'greater than'
-  re_lesser_than: 'lesser_than'
-  re_none_specific: 'None specific'
-  re_filter_results: 'Filter results'
 
   #issues
 
@@ -535,3 +559,35 @@ en:
   rating_average: 'Rating average'
   re_artifact_rating_average: 'Rating average'
   own_rating: 'Your rating'
+
+  #query and filter
+  label_any: 'any'
+  label_some: 'some'
+  label_is_me: 'is me'
+  label_is_not_me: 'is not me'
+  label_asc: 'ascending'
+  label_desc: 'descending'
+  re_enhanced_filter: 'Enhanced Filter'
+  re_filter: 'Filter'
+  re_select_all: 'Select all'
+  re_unselect_all: 'Unselect all'
+  re_filter_apply: 'Apply'
+  re_filter_save: 'Save'
+  re_filter_save_and_apply: 'Save & Apply'
+  re_filter_source_artifacts: 'Source'
+  re_filter_sink_artifacts: 'Sink'
+  re_filter_related_issues: 'Related Issues'
+  re_filter_order: 'Order'
+
+  re_query_settings: 'Settings'
+  re_query_name: 'Name'
+
+  re_artifact_id: '#'
+  re_incoming_relationship_count: 'Incoming'
+  re_outgoing_relationship_count: 'Outgoing'
+  re_related_issues: 'Issues'
+  re_updated_at: 'Updated'
+
+  re_query_visibility_public: 'public'
+  re_query_visibility_me: 'just me'
+  re_query_visibility_roles: 'for'
