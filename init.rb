@@ -36,7 +36,7 @@ Redmine::Plugin.register :redmine_re do
   author 'Bonn-Rhine-Sieg University of Applied Sciences (thorsten.merten@h-brs.de)'
   description 'This is a plugin to handle requirements engineering artifacts within redmine. The plugin has been developed
 within the KoREM project (http://korem.de) at Bonn-Rhine-Sieg University of Applied Sciences (http://h-brs.de)'
-  version '0.0.1'
+  version '1.0_rc1'
   url 'http://redmine.korem.de'
   author_url 'http://korem.de'
 
@@ -107,7 +107,6 @@ within the KoREM project (http://korem.de) at Bonn-Rhine-Sieg University of Appl
   # The Requirements item is added to the project menu after the Activity item
   menu :project_menu, :re, {:controller => 'requirements', :action => 'index'}, :caption => 'Requirements', :after => :activity, :param => :project_id
   activity_provider :re_artifact_properties, :class_name => 'ReArtifactProperties', :default => true
-  #ActiveSupport::Dependencies.load_once_paths.delete(File.expand_path(File.dirname(__FILE__))+'/lib')
 
   #settings :default => {'re_artifact_types' => ''}, :partial => 'settings/redmine_re'
 
