@@ -15,22 +15,18 @@ class DeleteRatingsAndCreateReRatings < ActiveRecord::Migration
       t.integer :value
     end
     
-    n = Rating.new
-    if n.has_attribute?("re_artifact_properties_id")
-      
-      ratings = Rating.find(:all)
-      ratings.each do |p|
-        new_rating = ReRating.new
-        new_rating.user_id = p.user_id
-        new_rating.re_artifact_properties_id = p.re_artifact_properties_id
-        new_rating.value = p.value
-        new_rating.save
+    if table_exists?(:ratings)
+      if column_exists?(:ratings, :re_artifact_properties_id)
+        Rating.all.each do |p|
+          new_rating = ReRating.new
+          new_rating.user_id = p.user_id
+          new_rating.re_artifact_properties_id = p.re_artifact_properties_id
+          new_rating.value = p.value
+          new_rating.save
+        end
+        drop_table :ratings
       end
-      
-      drop_table :ratings
     end
-    n.destroy
-    
   end
 
   def self.down

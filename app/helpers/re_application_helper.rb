@@ -1,6 +1,7 @@
 module ReApplicationHelper
   def rendered_relation_type(relation_type)
-    relation_type_alias = @re_relation_settings[relation_type]['alias']
+    #relation_type_alias = @re_relation_settings[relation_type]['alias']
+    relation_type_alias = relation_type
     relation_type_humanized = relation_type.humanize
 
     if relation_type_alias.blank? or relation_type_humanized.eql?(relation_type_alias)

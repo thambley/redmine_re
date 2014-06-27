@@ -49,7 +49,7 @@ class RedmineReController < ApplicationController
     ReSetting.check_cache
     session[:expanded_nodes] ||= Set.new
     @re_artifact_order = ReSetting.get_serialized("artifact_order", @project.id)
-    @re_relation_order = ReSetting.get_serialized("relation_order", @project.id)
+    @re_relation_types = ReRelationtype.relation_types(@project.id, false)
     @re_artifact_settings = ReSetting.active_re_artifact_settings(@project.id)
     @re_relation_settings = ReSetting.active_re_relation_settings(@project.id)
   end
@@ -95,6 +95,9 @@ class RedmineReController < ApplicationController
   end
 
   def create
+    
+    logger.debug ARTIFACT_TYPES.to_yaml
+    
     @artifact_type = self.controller_name
     logger.debug("############ Called edit for artifact of type: " + @artifact_type) if logger
 
@@ -116,7 +119,7 @@ class RedmineReController < ApplicationController
       @artifact.updated_by = User.current.id
       @artifact.created_by = User.current.id if @artifact.new_record?
 
-      # realtion related attributes
+      # relation related attributes
       unless params[:sibling_id].blank?
         @sibling = ReArtifactProperties.find(params[:sibling_id])
         @parent = @sibling.parent

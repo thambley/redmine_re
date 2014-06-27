@@ -4,6 +4,7 @@ require 'rubygems'
 
 require_dependency '../app/models/re_artifact_relationship'
 require_dependency '../app/models/re_artifact_properties'
+require_dependency '../app/models/re_relationtype'
 require_dependency '../app/helpers/re_application_helper'
 
 # Make singular and plural for RE_Artifact_Properties the same
@@ -11,6 +12,8 @@ ActiveSupport::Inflector.inflections do |inflect|
   inflect.singular /^(ReArtifactPropert)ies/i, '\1ies'
   inflect.plural /^(ReArtifactPropert)ies/i, '\1ies'
 end
+
+#ARTIFACT_TYPES = "%w{ReGoal ReSection ReVision ReTask ReSubtask ReVision ReWorkarea ReUserProfile ReSection ReRequirement ReScenario ReProcessword ReRational ReUseCase ReRationale Project}"
 
 #Rails.configuration.to_prepare do
 ActionDispatch::Callbacks.to_prepare do

@@ -2,8 +2,8 @@
 <% sinks   = @re_artifact_properties.sinks   %>
 <% issues  = @re_artifact_properties.issues  %>
 
-<% traces_as_source = @re_artifact_properties.traces_as_source %>
-<% traces_as_sink = @re_artifact_properties.traces_as_sink %>
+<% traces_as_source = @re_artifact_properties.get_traces_as_source %>
+<% traces_as_sink = @re_artifact_properties.get_traces_as_sink %>
 <% related_diagrams = @re_artifact_properties.related_diagrams %>
    
 <table class="attributes">

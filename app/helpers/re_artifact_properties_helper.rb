@@ -31,11 +31,12 @@ module ReArtifactPropertiesHelper
     field_html
   end
 
+  # Is calls by show view
   def rate
-    if @rating = User.current.ratings.find_by_re_artifact_properties_id(params[:id])
-      @rating
+    if @re_rating = User.current.re_ratings.find_by_re_artifact_properties_id(params[:id])
+      @re_rating
     else
-      @re_artifact_properties.ratings.new
+      @re_artifact_properties.re_ratings.new
     end
   end
 end

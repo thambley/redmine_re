@@ -884,7 +884,7 @@ class ReArtifactRelationshipController < RedmineReController
     
     #Add Connection to Issues
       if @chosen_issue
-        Realization.where("re_artifact_properties_id = ?", artifact.id.to_s).each do |source|
+        Realization.where("re_artifact_properties_id == ?", artifact.id.to_s).each do |source|
           if(@visualization_typ="netmap")
             if(@issues.include? source.issue_id )
               doit=true
@@ -1068,19 +1068,21 @@ class ReArtifactRelationshipController < RedmineReController
    if(params[:data].present?)
      #tooltip-graph
      @re_artifact_order = ReSetting.get_serialized("artifact_order", @project.id)
-     @re_relation_order = ReSetting.get_serialized("relation_order", @project.id)
-     @re_artifact_order.each_with_index do |artifact_type, i|
+     #@re_relation_order = ReSetting.get_serialized("relation_order", @project.id)
+     ReRelationtypes.find_all_by_project_id(@project.id).each do |r|
+     relation_type = r.relation_type      
         relation_settings = ReSetting.get_serialized(artifact_type, @project.id)
         if(relation_settings['show_in_visualization'] == true || relation_settings['show_in_visualization'] == "yes" )
           lokal_artifact=artifact_type.gsub(/^re_/, '').humanize
           @chosen_artifacts << "Re"+lokal_artifact.to_s
         end
       end
-      @re_relation_order.each_with_index do |relation_type, i|
-         relation_settings = ReSetting.get_serialized(relation_type, @project.id)
-         if(relation_settings['show_in_visualization'] == true || relation_settings['show_in_visualization'] == "yes" )
-           @chosen_relations << relation_type.to_s
-         end
+      ReRelationtypes.find_all_by_project_id(@project.id).each_with_index do |r, i|
+        relation_type = r.relation_type      
+        relation_settings = ReSetting.get_serialized(relation_type, @project.id)
+        if(relation_settings['show_in_visualization'] == true || relation_settings['show_in_visualization'] == "yes" )
+          @chosen_relations << relation_type.to_s
+        end
        end
        issue = ReSetting.get_plain("issues", @project.id)
        if (issue == "yes" || issue == true)
@@ -1188,5 +1190,5 @@ class ReArtifactRelationshipController < RedmineReController
     end
     @current_deep = @current_deep - 1
   end
- 
+  
 end
