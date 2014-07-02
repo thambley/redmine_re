@@ -1,7 +1,7 @@
 class CreateReGoals < ActiveRecord::Migration
   def self.up
     create_table :re_goals do |t|
-      end
+    end
   end
 
   def self.down
