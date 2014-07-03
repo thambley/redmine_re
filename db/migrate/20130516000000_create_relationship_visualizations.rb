@@ -3,7 +3,6 @@ class CreateRelationshipVisualizations < ActiveRecord::Migration
     create_table :re_relationship_visualizations do |t|
       t.integer :user_id
       t.integer :project_id
-      t.integer :artefakt_id
       t.string :visualization_typ
 
       t.integer :re_attachment, :default => 1

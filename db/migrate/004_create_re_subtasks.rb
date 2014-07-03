@@ -3,6 +3,9 @@ class CreateReSubtasks < ActiveRecord::Migration
     create_table :re_subtasks do |t|
       t.column :solution, :string
       t.column :sub_type, :integer
+      t.column :name, :string
+      t.column :position, :integer
+      t.column :re_task_id, :integer
     end
   end
 
